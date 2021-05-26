@@ -132,8 +132,8 @@ foreach(lib screen dom component)
       src
   )
 
-  # C++17 is used. We requires fold expression at least.
-  set_property(TARGET ${lib} PROPERTY CXX_STANDARD 17)
+  # C++20 is used. We requires fold expression at least.
+  set_property(TARGET ${lib} PROPERTY CXX_STANDARD 20)
 
   # Force Microsoft Visual Studio to decode sources files in UTF-8. This applies
   # to the library and the library users.
@@ -252,7 +252,7 @@ if (FTXUI_BUILD_TESTS AND ${CMAKE_VERSION} VERSION_GREATER "3.11.4")
     PRIVATE src
   )
 
-  set_property(TARGET tests PROPERTY CXX_STANDARD 17)
+  set_property(TARGET tests PROPERTY CXX_STANDARD 20)
 endif()
 
 if(FTXUI_BUILD_EXAMPLES)

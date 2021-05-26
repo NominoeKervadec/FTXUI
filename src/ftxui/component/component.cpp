@@ -141,7 +141,8 @@ void ComponentBase::Detach() {
                          [this](const Component& that) {  //
                            return this == that.get();
                          });
-  parent_->children_.erase(it);
+  if (it != parent_->children_.end())
+    parent_->children_.erase(it);
 }
 
 }  // namespace ftxui

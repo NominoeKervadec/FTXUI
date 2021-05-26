@@ -29,6 +29,27 @@ class ComponentBase {
   // ComponentBase hierarchy.
   ComponentBase* Parent();
   void Add(Component children);
+  void Remove(Component children) { std::erase(children_, children); }
+  void MoveUp(Component children) {
+    auto it = std::find(children_.begin(), children_.end(), children);
+    if (it == children_.end() || it == children_.begin()) {
+      return;
+    } else {
+      auto tmp = *it;
+      *it = *(it - 1);
+      *(it - 1) = tmp;
+    }
+  }
+  void MoveDown(Component children) {
+    auto it = std::find(children_.begin(), children_.end(), children);
+    if (it == children_.end() || it == children_.end() - 1) {
+      return;
+    } else {
+      auto tmp = *it;
+      *it = *(it + 1);
+      *(it + 1) = tmp;
+    }
+  }
 
   // Renders the component.
   virtual Element Render();

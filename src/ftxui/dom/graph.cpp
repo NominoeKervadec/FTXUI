@@ -71,16 +71,16 @@ class Graph_line : public Node {
   }
 
   void Render(Screen& screen) override {
-    int width = (box_.x_max - box_.x_min + 1) * 2;
-    int height = (box_.y_max - box_.y_min + 1) * 2;
+    int width = (box_.x_max - box_.x_min + 1);
+    int height = (box_.y_max - box_.y_min + 1);
     auto data = graph_function_(width, height);
     unsigned i = 0;
     for (int x = box_.x_min; x <= box_.x_max; ++x) {
       auto value = data[i++];
-      auto min_height = 2 * box_.y_max - value;
-      auto drawn = 0;
+      auto min_height = box_.y_max - value;
+      unsigned drawn = 0;
       for (int y = box_.y_min; y <= box_.y_max; ++y) {
-        int yy = 2 * y;
+        int yy = y;
         auto should_draw = value && yy >= min_height;
         drawn += should_draw ? 1 : 0;
         wchar_t pix = should_draw && (drawn <= line_width_ || fill_)

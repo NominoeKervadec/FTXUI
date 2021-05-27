@@ -30,9 +30,9 @@ class ComponentBase {
   ComponentBase* Parent();
   void Add(Component children);
   void Remove(Component children) {
-      std::erase(children_, children);
-      [[maybe_unused]] auto* parent = children->Parent();
-      parent = nullptr;
+    std::erase(children_, children);
+    [[maybe_unused]] auto* parent = children->Parent();
+    parent = nullptr;
   }
   void MoveUp(Component children) {
     auto it = std::find(children_.begin(), children_.end(), children);
@@ -53,6 +53,9 @@ class ComponentBase {
       *it = *(it + 1);
       *(it + 1) = tmp;
     }
+  }
+  void ClearChildrens() {
+      children_.clear();
   }
 
   // Renders the component.

@@ -20,7 +20,7 @@ using Components = std::vector<Component>;
 
 template <class T, class... Args>
 std::shared_ptr<T> Make(Args&&... args) {
-  return std::make_shared<T>(args...);
+  return std::make_shared<T>(std::forward<Args>(args)...);
 }
 
 Component Button(ConstStringRef label,

@@ -29,7 +29,11 @@ class ComponentBase {
   // ComponentBase hierarchy.
   ComponentBase* Parent();
   void Add(Component children);
-  void Remove(Component children) { std::erase(children_, children); }
+  void Remove(Component children) {
+      std::erase(children_, children);
+      [[maybe_unused]] auto* parent = children->Parent();
+      parent = nullptr;
+  }
   void MoveUp(Component children) {
     auto it = std::find(children_.begin(), children_.end(), children);
     if (it == children_.end() || it == children_.begin()) {

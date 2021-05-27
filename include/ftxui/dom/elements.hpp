@@ -36,7 +36,7 @@ Element window(Element title, Element content);
 Element spinner(int charset_index, size_t image_index);
 Elements paragraph(std::wstring text);  // Use inside hflow(). Split by space.
 Element graph(GraphFunction);
-Element graph_line(GraphFunction, unsigned, bool);
+Element graph_line(GraphFunction, unsigned, bool, wchar_t);
 
 // -- Decorator ---
 Element bold(Element);

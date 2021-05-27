@@ -106,8 +106,10 @@ Element graph(GraphFunction graph_function) {
 
 Element graph_line(GraphFunction graph_function,
                    unsigned line_width,
-                   bool fill) {
-  return std::make_shared<Graph_line>(graph_function, line_width, fill);
+                   bool fill,
+                   wchar_t character) {
+  return std::make_shared<Graph_line>(graph_function, line_width, fill,
+                                      character);
 }
 }  // namespace ftxui
 
